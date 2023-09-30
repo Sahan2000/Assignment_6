@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="stylesheet" href="assets/style/normalize.css">
+    <link rel="stylesheet" href="assets/bootstrap-5.3.1-dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inria+Sans&family=Inter:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!--Add Loading page section-->
+<section class="loading-page">
+    <div class="counter">
+        <p>loading</p>
+        <h1>0%</h1>
+        <hr>
+    </div>
+</section>
+
+<!--Add Home page section-->
+
+<section>
+    <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
+        <div id="container-fluid" class="container-fluid">
+            <img src="assets/image/logo.png" alt="logo.pgn">
+            <!--<a class="navbar-brand" href="#">Navbar</a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div id="navbar-nav" class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Customer</a>
+                    <a class="nav-link active" aria-current="page" href="#">Item</a>
+                    <a class="nav-link active" aria-current="page" href="#">Order</a>
+                    <a class="nav-link active" aria-current="page" href="#"><button>View Order Details</button></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<script src="assets/lib/jquery.min.js"></script>
+<script src="assets/bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        var counter = 0;
+        var c = 0;
+        var i = setInterval(function(){
+            $(".loading-page>.counter>h1").html(c + "%");
+            $(".loading-page>.counter>hr").css("width", c + "%");
+            //$(".loading-page .counter").css("background", "linear-gradient(to right, #f60d54 "+ c + "%,#0d0d0d "+ c + "%)");
+
+            /*
+            $(".loading-page .counter h1.color").css("width", c + "%");
+            */
+            counter++;
+            c++;
+
+            if(counter == 101) {
+                clearInterval(i);
+                const loadingScreen = document.querySelector('.loading-page');
+                loadingScreen.style.display = 'none';
+            }
+        }, 50);
+    });
+</script>
+</body>
+</html>
