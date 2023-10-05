@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="assets/bootstrap-5.3.1-dist/css/bootstrap.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inria+Sans&family=Inter:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inria+Sans&family=Inter:wght@500&display=swap"
+          rel="stylesheet">
+    <!-- Add Bootstrap CSS (you may use a CDN or local file) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -22,14 +25,15 @@
     </div>
 </section>
 
-<!--Add Home page section-->
+<!--Add Navigation Bar section-->
 
 <section>
     <nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary">
         <div id="container-fluid" class="container-fluid">
             <img src="assets/image/logo.png" alt="logo.pgn">
             <!--<a class="navbar-brand" href="#">Navbar</a>-->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -38,38 +42,130 @@
                     <a class="nav-link active" aria-current="page" href="#">Customer</a>
                     <a class="nav-link active" aria-current="page" href="#">Item</a>
                     <a class="nav-link active" aria-current="page" href="#">Order</a>
-                    <a class="nav-link active" aria-current="page" href="#"><button>View Order Details</button></a>
+                    <a class="nav-link active" aria-current="page" href="#">
+                        <button>View Order Details</button>
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 </section>
 
+<!--Add Home Page Section-->
+<main class="home_page">
+    <section class="home_page_paragraph">
+        <div>
+            <div>
+                <h1>Welcome To POS System</h1>
+            </div>
+
+            <div>
+                <p>We just need to know a bit about your business first. Let's </p>
+                <p>start with your industry.Let's start with your industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--Add bar graph-->
+    <div class="chart-wrap vertical">
+
+        <div class="grid">
+            <div class="bar" style="--bar-value:85%;" data-name="Monday" title="Monday 85%"></div>
+            <div class="bar" style="--bar-value:23%;" data-name="Tuesday" title="Tuesday 23%"></div>
+            <div class="bar" style="--bar-value:7%;" data-name="Wednesday" title="Wednesday 7%"></div>
+            <div class="bar" style="--bar-value:38%;" data-name="Thursday" title="Thursday 38%"></div>
+            <div class="bar" style="--bar-value:35%;" data-name="Friday" title="Friday 35%"></div>
+            <div class="bar" style="--bar-value:30%;" data-name="Saturday" title="Saturday 30%"></div>
+            <div class="bar" style="--bar-value:5%;" data-name="Sunday" title="Sunday 5%"></div>
+        </div>
+    </div>
+
+    <section class="count_details">
+        <div>
+            <img src="assets/image/icons8-customer-64.png" alt="customer.png">
+            <h3 class="count_details_topic">Customer</h3>
+            <h3 class="count">32</h3>
+        </div>
+
+        <div>
+            <img src="assets/image/icons8-item-100.png" alt="customer.png">
+            <h3 class="count_details_topic">Item</h3>
+            <h3 class="count">32</h3>
+        </div>
+
+        <div>
+            <img src="assets/image/icons8-order-64.png" alt="customer.png">
+            <h3 class="count_details_topic">Order</h3>
+            <h3 class="count">32</h3>
+        </div>
+
+    </section>
+
+</main>
+
 <script src="assets/lib/jquery.min.js"></script>
 <script src="assets/bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>
+<!-- Add Chart.js (you may use a CDN or local file) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
-    $(document).ready(function() {
+    const myFunction = function () {
+        const loadingScreen = document.querySelector('.home_page');
+        loadingScreen.style.display = 'block';
+
+
+    }
+    $(document).ready(function () {
+
+        const loadingScreen = document.querySelector('.home_page');
+        loadingScreen.style.display = 'none';
 
         var counter = 0;
         var c = 0;
-        var i = setInterval(function(){
+        var i = setInterval(function () {
             $(".loading-page>.counter>h1").html(c + "%");
             $(".loading-page>.counter>hr").css("width", c + "%");
-            //$(".loading-page .counter").css("background", "linear-gradient(to right, #f60d54 "+ c + "%,#0d0d0d "+ c + "%)");
-
-            /*
-            $(".loading-page .counter h1.color").css("width", c + "%");
-            */
             counter++;
             c++;
 
-            if(counter == 101) {
+            if (counter == 101) {
                 clearInterval(i);
                 const loadingScreen = document.querySelector('.loading-page');
                 loadingScreen.style.display = 'none';
+                myFunction();
+
             }
         }, 50);
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var ctx = document.getElementById('barChart').getContext('2d');
+        var data = {
+            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4'],
+            datasets: [{
+                label: 'Data Set 1',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [12, 19, 3, 5]
+            }]
+        };
+
+        var myBarChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                maintainAspectRatio: false, // Allow chart to be responsive
+                responsive: true,           // Enable responsiveness
+            }
+        });
+    });
+
 </script>
 </body>
 </html>
