@@ -223,8 +223,6 @@ body {
     padding: 5px 0 5px 0;
     height: 800px;
     width: 446px;
-    /*height: 100%;
-    width: 100%;*/
     border-left: 2px solid #aaa;
     background: repeating-linear-gradient(90deg, transparent, transparent 19.5%, rgba(170, 170, 170, 0.7) 20%);
 }

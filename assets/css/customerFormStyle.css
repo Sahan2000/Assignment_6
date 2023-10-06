@@ -1,0 +1,175 @@
+.navbar-nav{
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    right: 5%;
+}
+
+#navbar-nav>a{
+    text-decoration: none;
+    color: white;
+    font-size: 31px;
+    font-family: 'Inria Sans', sans-serif;;
+    font-weight: 400;
+}
+
+#navbar-nav>a:last-child>button{
+    height: 46px;
+    width: 203px;
+    font-size: 22px;
+    color: white;
+    background-color: #FF5C8A;
+    border-radius: 5px;
+    border: 0;
+}
+
+.container-fluid{
+    background-color: #9D4EDD;
+    height: 100px;
+    width: 100vw;
+}
+
+#navbar{
+    padding: 0;
+}
+
+#container-fluid>img{
+    position: absolute;
+    left: 5%;
+}
+
+#customer_headline{
+    position: absolute;
+    left: 10%;
+    top: 15%;
+}
+
+#form{
+    position: absolute;
+    top: 28%;
+    left: 15%;
+}
+
+.form-control{
+    width: 350px;
+}
+
+.mb-3:nth-child(2){
+    position: absolute;
+    bottom:-110%;
+    left: 1.1%;
+}
+
+.mb-3:nth-child(3){
+    position: absolute;
+    top: 0;
+    left: 55%;
+}
+
+.mb-3:nth-child(4){
+    position: absolute;
+    bottom: -110%;
+    left: 55%;
+}
+
+#button{
+    position: absolute;
+    right: -30%;
+    top: 0;
+}
+
+#button>button{
+    display: flex;
+    margin-bottom: 20px;
+    width: 115px;
+    height: 47px;
+    font-size: 27px;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 400;
+    align-items: center;
+    color: black;
+}
+
+#button>button:nth-child(1){
+    background-color: #C77DFF;
+}
+
+#button>button:nth-child(2){
+    background-color: #FF5C8A;
+}
+
+#button>button:nth-child(3){
+    background-color: #52B788;
+}
+
+.form-label{
+    font-size: 22px;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 400;
+}
+
+hr{
+    border: 2px solid black;
+    width: 1466.1px;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+}
+
+/*apply css table */
+
+.table{
+    width: 1147px;
+    position: absolute;
+    left: 20%;
+    top: 65%;
+}
+
+#table_head>tr>th{
+    background-color: #C77DFF;
+    font-size: 28px;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 400;
+    text-align: center;
+    padding: 0;
+}
+
+#table_head>tr>th:first-child{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#table_head>tr>th:last-child{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.table>tbody{
+    font-size: 22px;
+    font-family: 'Inria Sans', sans-serif;
+    font-weight: 400;
+}
+
+#viewCustomers{
+    position: absolute;
+    top: 55%;
+    left: 12%;
+}
+
+#searchCustomer{
+    position: absolute;
+    top: 56%;
+    right: 20%;
+}
+
+#searchBtn{
+    background-color: white;
+    border: 0;
+    position: absolute;
+    right: 16.2%;
+    top: 55.2%;
+}
+
+#searchBtn>img{
+    width: 40px;
+}
