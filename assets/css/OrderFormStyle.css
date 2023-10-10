@@ -1,0 +1,224 @@
+#orderForm{
+    width: 1920px;
+    height: 944px;
+}
+
+#order_headline>h1{
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    left: 10%;
+}
+
+#form2{
+    width: 603px;
+    height: 337px;
+    position: absolute;
+    top: 17%;
+    left: 10%;
+}
+
+#orderId{
+    width: 273px;
+}
+
+#orderDate{
+    width: 273px;
+}
+
+.mb-3:nth-child(2){
+    position: absolute;
+    top: 0;
+    left: 60%;
+}
+
+.mb-3:nth-child(3){
+    position: absolute;
+    top: 29%;
+    left: 1.6%;
+}
+
+#customerName1{
+    width: 273px;
+}
+
+.mb-3:nth-child(4){
+    position: absolute;
+    top: 28.8%;
+    left: 60%;
+}
+
+#address1{
+    width: 273px;
+}
+
+.mb-3:nth-child(5){
+    position: absolute;
+    top: 57%;
+}
+
+#contactNo1{
+    width: 273px;
+}
+
+.mb-3:nth-child(6){
+    position: absolute;
+    bottom: 15%;
+    right: -5%;
+}
+
+#button2{
+    position: absolute;
+    bottom: 0;
+}
+
+.bill{
+    width: 579px;
+    height: 368px;
+    position: absolute;
+    bottom: -110%;
+}
+
+.bill>h1{
+    display: inline-block;
+}
+
+.bill>h1:nth-child(2){
+    color: red;
+}
+
+#discountPrice{
+    position: absolute;
+    right:50%;
+    top: 0;
+}
+
+#discountPrice>h5{
+    position: absolute;
+    left: 120%;
+}
+
+#discountPrice>#discount{
+    width: 100px;
+    position: absolute;
+    right: -115%;
+    top: -20%;
+}
+
+#subTotal{
+    position: absolute;
+    bottom: -20%;
+}
+
+#cash{
+    position: absolute;
+    top: 40%;
+    left: 0;
+}
+
+#button2{
+    position: absolute;
+    top: 190%;
+    right: 0;
+}
+
+#btnPurchase{
+    background-color: #FF5C8A;
+    border: 0;
+    width: 90px;
+    height: 40px;
+}
+
+.vr{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: black;
+    height: 820px;
+}
+
+#selectItem{
+    position: absolute;
+    left: 55%;
+    top: 8%;
+}
+
+#selectItemId{
+    width: 273px;
+}
+
+#selectForm>form>.mb-3:nth-child(1){
+    position: absolute;
+    right: 25%;
+    top: 17%;
+}
+
+#selectItemDescription{
+    width: 273px;
+}
+
+#selectForm>form>.mb-3:nth-child(2){
+    position: absolute;
+    left: 80%;
+    top: 17%;
+}
+
+#selectItemPrice{
+    width: 233px;
+}
+
+#selectForm>form>.mb-3:nth-child(3){
+    position: absolute;
+    left: 60.8%;
+}
+
+#selectItemQty{
+    width: 100px;
+}
+
+#selectForm>form>.mb-3:nth-child(4){
+    position: absolute;
+    left: 77%;
+    top: 29%;
+}
+
+#selectItemOrderQty{
+    width: 100px;
+}
+
+#selectForm>form>.mb-3:nth-child(5){
+    position: absolute;
+    left: 85%;
+    top: 29%;
+}
+
+#addItemBtn>button{
+    background-color: #52B788;
+    border: 0;
+    position: absolute;
+    left: 89.4%;
+    top: 41%;
+}
+
+#addCartTable{
+    width: 850px;
+    position: absolute;
+    left: 53%;
+    top: 50%;
+}
+
+#addCartTable_head>tr>th{
+    background-color: #C77DFF;
+    text-align: center;
+}
+
+#addCartTable_head>tr>th:first-child{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#addCartTable_head>tr>th:last-child{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}

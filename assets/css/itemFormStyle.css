@@ -1,29 +1,38 @@
-#container-fluid1>img{
+
+
+.container-fluid{
+    background-color: #9D4EDD;
+    height: 100px;
+    width: 100vw;
+}
+
+#navbar2{
+    padding: 0;
+}
+
+#container-fluid2>img{
     position: absolute;
     left: 5%;
 }
 
-#customer_headline{
+#item_headline{
     position: absolute;
     left: 10%;
     top: 10%;
 }
 
-#form{
+#form1{
     position: absolute;
-    top: 20%;
+    top: 23%;
     left: 15%;
 }
 
-#searchCustomer{
-    width: 350px;
+#itemId{
+    width: 273px;
 }
-/*.form-control{
-    width: 350px;
-}*/
 
-#customerId{
-   width: 273px ;
+#searchItem{
+    width: 350px;
 }
 
 .mb-3:nth-child(2){
@@ -44,27 +53,27 @@
     left: 55%;
 }
 
-#customerAddress{
+#itemPrice{
     width: 273px;
 }
 
-#contactNo{
+#itemQty{
     width: 273px;
 }
 
-#contactNodiv{
+#qty{
     position: absolute;
-    top: 47%;
+    top: 50%;
     left: 60%;
 }
 
-#button{
+#button1{
     position: absolute;
     right: -20%;
-    top: -10%;
+    top: -15%;
 }
 
-#button>button{
+#button1>button{
     display: flex;
     margin-bottom: 20px;
     width: 90px;
@@ -77,24 +86,20 @@
     color: black;
 }
 
-#button>button:nth-child(1){
+#button1>button:nth-child(1){
     background-color: #C77DFF;
-    border: 0;
 }
 
-#button>button:nth-child(2){
+#button1>button:nth-child(2){
     background-color: #FF5C8A;
-    border: 0;
 }
 
-#button>button:nth-child(3){
+#button1>button:nth-child(3){
     background-color: #52B788;
-    border: 0;
 }
 
-#button>button:nth-child(4){
+#button1>button:nth-child(4){
     background-color: #EBE76C;
-    border: 0;
 }
 
 .form-label{
@@ -108,19 +113,19 @@ hr{
     width: 1466.1px;
     position: absolute;
     left: 10%;
-    top: 45%;
+    top: 48%;
 }
 
 /*apply css table */
 
-#table{
+#table1{
     width: 1147px;
     position: absolute;
-    left: 16%;
-    top: 65%;
+    left: 15%;
+    top: 63%;
 }
 
-#table_head>tr>th{
+#table_head1>tr>th{
     background-color: #C77DFF;
     font-size: 28px;
     font-family: 'Inria Sans', sans-serif;
@@ -129,12 +134,12 @@ hr{
     padding: 0;
 }
 
-#table_head>tr>th:first-child{
+#table_head1>tr>th:first-child{
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-#table_head>tr>th:last-child{
+#table_head1>tr>th:last-child{
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -145,27 +150,26 @@ hr{
     font-weight: 400;
 }
 
-#viewCustomers{
+#viewItems{
     position: absolute;
-    top: 55%;
+    top: 53%;
     left: 12%;
 }
 
-#searchCustomer{
+#searchItem{
     position: absolute;
-    top: 56%;
+    top: 54%;
     right: 20%;
 }
 
-#searchBtn{
+#searchBtn1{
     background-color: white;
     border: 0;
     position: absolute;
     right: 16.2%;
-    top: 55.2%;
+    top: 53.2%;
 }
 
-#searchBtn>img{
+#searchBtn1>img{
     width: 40px;
 }
-

@@ -1,0 +1,54 @@
+#orderDetailsHeadLine{
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+#searchDiv{
+    position: absolute;
+    right: 15%;
+    top: 16%;
+}
+
+#searchOrderDetails{
+    width: 273px;
+}
+
+#searchOrderDetailsBtn{
+    background-color: white;
+    border: 0;
+    position: absolute;
+    top: -6px;
+    right: -80px;
+}
+
+#searchOrderDetailsBtn>img{
+    width: 40px;
+}
+
+#orderDetailsTbl{
+    width: 1412px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25%;
+    margin: auto;
+}
+
+#orderDetailsTbl_head>tr>th{
+    background-color: #C77DFF;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'Inria Sans', sans-serif;
+    text-align: center;
+}
+
+#orderDetailsTbl_head>tr>th:first-child{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#orderDetailsTbl_head>tr>th:last-child{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
