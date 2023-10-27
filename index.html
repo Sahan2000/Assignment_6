@@ -19,8 +19,7 @@
                 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inria+Sans&family=Inter:wght@500&family=Khmer&display=swap"
                       rel="stylesheet">
                 <!-- Add Bootstrap CSS (you may use a CDN or local file) -->
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 </head>
 <body>
@@ -136,26 +135,6 @@
             </div>
         </div>
     </div>
-    <!--<section class="count_details">
-        <div>
-            <img src="assets/image/icons8-customer-64.png" alt="customer.png">
-            <h3 class="count_details_topic">Customer</h3>
-            <h3 class="count">32</h3>
-        </div>
-
-        <div>
-            <img src="assets/image/icons8-item-100.png" alt="customer.png">
-            <h3 class="count_details_topic">Item</h3>
-            <h3 class="count">32</h3>
-        </div>
-
-        <div>
-            <img src="assets/image/icons8-order-64.png" alt="customer.png">
-            <h3 class="count_details_topic">Order</h3>
-            <h3 class="count">32</h3>
-        </div>
-
-    </section>-->
 
 </main>
 
@@ -216,7 +195,7 @@
                 <th scope="col">Contact NO</th>
             </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="customer-tbl-body"></tbody>
         </table>
     </section>
 </main>
@@ -253,7 +232,7 @@
                     </div>
 
                     <div id="button1" class="mt-3">
-                        <button type="button" class="btn btn-success">Submit</button>
+                        <button  type="button" class="btn btn-success">Submit</button>
                         <button type="button" class="btn btn-primary">Update</button>
                         <button type="button" class="btn btn-danger">Delete</button>
                         <button type="reset" class="btn btn-danger">reset</button>
@@ -279,7 +258,7 @@
                 <th scope="col">Qty</th>
             </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="item-tbl-body"></tbody>
         </table>
     </section>
 </main>
@@ -363,7 +342,13 @@
                 <form>
                     <div class="mb-3">
                         <label for="selectItemId" class="form-label">Item Id</label>
-                        <input type="number" class="form-control" id="selectItemId">
+                        <select id="selectItemId" class="form-select" aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <!--<input type="number" class="form-control" id="selectItemId">-->
                     </div>
                     <div class="mb-3">
                         <label for="selectItemDescription" class="form-label">Item Description</label>
@@ -434,9 +419,17 @@
 </main>
 
 <script src="assets/lib/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--<script src="assets/bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>-->
 <script src="assets/bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>
+<script type="module" src="controller/customerController.js"></script>
+<script type="module" src="controller/itemController.js"></script>
 <!-- Add Chart.js (you may use a CDN or local file) -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <script>
 
@@ -586,7 +579,7 @@
     });
 
     document.addEventListener("DOMContentLoaded", function () {
-        var ctx = document.getElementById('barChart').getContext('2d');
+        var ctx = document.getElementById('barChart').getContext('2d')
         var data = {
             labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4'],
             datasets: [{

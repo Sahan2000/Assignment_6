@@ -78,23 +78,39 @@
 }
 
 #button>button:nth-child(1){
+    border: 2px solid #C77DFF;
+    background-color: transparent;
+}
+
+#button>button:nth-child(1):hover{
     background-color: #C77DFF;
-    border: 0;
 }
 
 #button>button:nth-child(2){
+    border: 2px solid #FF5C8A;
+    background-color: transparent;
+}
+
+#button>button:nth-child(2):hover{
     background-color: #FF5C8A;
-    border: 0;
 }
 
 #button>button:nth-child(3){
+    border: 2px solid #52B788;
+    background-color: transparent;
+}
+
+#button>button:nth-child(3):hover{
     background-color: #52B788;
-    border: 0;
 }
 
 #button>button:nth-child(4){
+    border: 2px solid #EBE76C;
+    background-color: transparent;
+}
+
+#button>button:nth-child(4):hover{
     background-color: #EBE76C;
-    border: 0;
 }
 
 .form-label{
@@ -143,6 +159,7 @@ hr{
     font-size: 22px;
     font-family: 'Inria Sans', sans-serif;
     font-weight: 400;
+    text-align: center;
 }
 
 #viewCustomers{

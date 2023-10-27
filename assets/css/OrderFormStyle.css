@@ -123,10 +123,16 @@
 }
 
 #btnPurchase{
-    background-color: #FF5C8A;
-    border: 0;
+    background-color: transparent;
+    border: 2px solid #FF5C8A;
     width: 90px;
     height: 40px;
+    color: #FF5C8A;
+}
+
+#btnPurchase:hover{
+    background-color: #FF5C8A;
+    color: black;
 }
 
 .vr{
@@ -194,11 +200,18 @@
 }
 
 #addItemBtn>button{
-    background-color: #52B788;
-    border: 0;
+    background-color: transparent;
+    border: 2px solid #52B788;
     position: absolute;
     left: 89.4%;
     top: 41%;
+    color: #52B788;
+}
+
+#addItemBtn>button:hover{
+    background-color:#52B788;
+    color: black;
+
 }
 
 #addCartTable{

@@ -87,18 +87,38 @@
 }
 
 #button1>button:nth-child(1){
+    border: 2px solid #C77DFF;
+    background-color: transparent;
+}
+
+#button1>button:nth-child(1):hover{
     background-color: #C77DFF;
 }
 
 #button1>button:nth-child(2){
+    border: 2px solid #FF5C8A;
+    background-color: transparent;
+}
+
+#button1>button:nth-child(2):hover{
     background-color: #FF5C8A;
 }
 
 #button1>button:nth-child(3){
+    border: 2px solid #52B788;
+    background-color: transparent;
+}
+
+#button1>button:nth-child(3):hover{
     background-color: #52B788;
 }
 
 #button1>button:nth-child(4){
+    border: 2px solid #EBE76C;
+    background-color: transparent;
+}
+
+#button1>button:nth-child(4):hover{
     background-color: #EBE76C;
 }
 
