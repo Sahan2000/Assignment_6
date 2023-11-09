@@ -25,7 +25,7 @@
 <body>
 
 <!--Add Loading page section-->
-<section class="loading-page">
+<section id="loading_page" class="loading-page">
     <div class="counter">
         <p>loading</p>
         <h1>0%</h1>
@@ -46,11 +46,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div id="navbar-nav" class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link active" aria-current="page" href="#">Customer</a>
-                    <a class="nav-link active" aria-current="page" href="#">Item</a>
-                    <a class="nav-link active" aria-current="page" href="#">Order</a>
-                    <a class="nav-link active" aria-current="page" href="#">
+                    <a class="nav-link active" id="home" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" id="customer" aria-current="page" href="#">Customer</a>
+                    <a class="nav-link active" id="item" aria-current="page" href="#">Item</a>
+                    <a class="nav-link active" id="order" aria-current="page" href="#">Order</a>
+                    <a class="nav-link active" id="orderDetails" aria-current="page" href="#">
                         <button>View Order Details</button>
                     </a>
                 </div>
@@ -200,7 +200,7 @@
     </section>
 </main>
 
-<main  class="itemManage">
+<main id="itemManage"  class="itemManage">
     <section>
         <div id="item_headline" class="text-center m-3">
             <h1>Item Manage</h1>
@@ -274,16 +274,16 @@
                 <form>
                     <div class="mb-3">
                         <label for="orderId" class="form-label">Order Id :</label>
-                        <input type="number" class="form-control" id="orderId">
+                        <input type="text" class="form-control" id="orderId">
                     </div>
                     <div class="mb-3">
                         <label for="orderDate" class="form-label">Order date :</label>
                         <input type="text" class="form-control" id="orderDate">
                     </div>
                     <div  class="mb-3">
-                        <label for="customerId1" class="form-label">Customer id :</label>
-                        <select id="customerId1" class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
+                        <label for="customer_id1" class="form-label">Customer id :</label>
+                        <select  id="customer_id1" class="form-select" aria-label="Default select example">
+                            <option selected>Select customer id</option>
                         </select>
                     </div>
 
@@ -294,7 +294,7 @@
 
                     <div  class="mb-3">
                         <label for="address1" class="form-label">Address :</label>
-                        <input type="number" class="form-control" id="address1">
+                        <input type="text" class="form-control" id="address1">
                     </div>
 
                     <div class="mb-3">
@@ -304,7 +304,7 @@
 
                     <div class="bill">
                         <h1>Total :</h1>
-                        <h1>6000.00</h1>
+                        <h1 id="totalValue">6000.00</h1>
 
                         <div id="discountPrice" class="mb-3">
                             <h5>Discount:</h5>
@@ -313,14 +313,15 @@
 
                         <div id="cash" class="mb-3">
                             <h5>Cash :</h5>
-                            <input type="number" class="form-control" id="cash_input">
+                            <input type="text" class="form-control" id="cash_input">
+
                             <h5>Balance :</h5>
                             <input type="number" class="form-control" id="balance_input">
                         </div>
 
                         <div id="subTotal" class="bill">
                             <h1>Sub Total :</h1>
-                            <h1>6000.00</h1>
+                            <h1 id="subTotalInput">6000.00</h1>
                         </div>
                     </div>
 
@@ -345,10 +346,7 @@
                     <div class="mb-3">
                         <label for="selectItemId" class="form-label">Item Id</label>
                         <select id="selectItemId" class="form-select" aria-label="Default select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option selected>Select item id</option>
                         </select>
                         <!--<input type="number" class="form-control" id="selectItemId">-->
                     </div>
@@ -385,7 +383,7 @@
                     <th scope="col">Qty</th>
                 </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="itemCart-tbl-body"></tbody>
             </table>
         </div>
     </section>
@@ -421,233 +419,16 @@
 </main>
 
 <script src="assets/lib/jquery.min.js"></script>
+<script src="assets/script/script.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!--<script src="assets/bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>-->
 <script src="assets/bootstrap-5.3.1-dist/js/bootstrap.min.js"></script>
 <script type="module" src="controller/customerController.js"></script>
 <script type="module" src="controller/itemController.js"></script>
+<script type="module" src="controller/orderController.js"></script>
 <!-- Add Chart.js (you may use a CDN or local file) -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-<script>
-
-    window.addEventListener('load', ()=>{
-        $('#navbar-nav>a').eq(0).css("color", "black");
-        $('#navbar-nav>a').eq(1).css("color", "white");
-        $('#navbar-nav>a').eq(2).css("color", "white");
-        $('#navbar-nav>a').eq(3).css("color", "white");
-    });
-
-    const myFunction = function () {
-        const loadingScreen = document.querySelector('.home_page');
-        loadingScreen.style.display = 'block';
-
-        const loadingScreen1 = document.querySelector('.customer_manage');
-        loadingScreen1.style.display = 'none';
-
-        const loadingScreen2 = document.querySelector('.itemManage');
-        loadingScreen2.style.display = 'none';
-
-        const loadingScreen3 = document.querySelector('.header');
-        loadingScreen3.style.display = 'block';
-
-        const loadingScreen4 = document.querySelector('.orderForm');
-        loadingScreen4.style.display = 'none';
-
-        const loadingScreen5 = document.querySelector('.orderDetailsForm');
-        loadingScreen5.style.display = 'none';
-    }
-
-    const myFunction1 = function () {
-        const loadingScreen = document.querySelector('.home_page');
-        loadingScreen.style.display = 'none';
-
-        const loadingScreen1 = document.querySelector('.customer_manage');
-        loadingScreen1.style.display = 'block';
-
-        const loadingScreen2 = document.querySelector('.itemManage');
-        loadingScreen2.style.display = 'none';
-
-        const loadingScreen3 = document.querySelector('.header');
-        loadingScreen3.style.display = 'block';
-
-        const loadingScreen4 = document.querySelector('.orderForm');
-        loadingScreen4.style.display = 'none';
-
-        const loadingScreen5 = document.querySelector('.orderDetailsForm');
-        loadingScreen5.style.display = 'none';
-    }
-
-    const myFunction2 = function () {
-        const loadingScreen = document.querySelector('.home_page');
-        loadingScreen.style.display = 'none';
-
-        const loadingScreen1 = document.querySelector('.customer_manage');
-        loadingScreen1.style.display = 'none';
-
-        const loadingScreen2 = document.querySelector('.itemManage');
-        loadingScreen2.style.display = 'block';
-
-        const loadingScreen3 = document.querySelector('.header');
-        loadingScreen3.style.display = 'block';
-
-        const loadingScreen4 = document.querySelector('.orderForm');
-        loadingScreen4.style.display = 'none';
-
-        const loadingScreen5 = document.querySelector('.orderDetailsForm');
-        loadingScreen5.style.display = 'none';
-    }
-
-    const myFunction3 = function () {
-        const loadingScreen = document.querySelector('.home_page');
-        loadingScreen.style.display = 'none';
-
-        const loadingScreen1 = document.querySelector('.customer_manage');
-        loadingScreen1.style.display = 'none';
-
-        const loadingScreen2 = document.querySelector('.itemManage');
-        loadingScreen2.style.display = 'none';
-
-        const loadingScreen3 = document.querySelector('.header');
-        loadingScreen3.style.display = 'block';
-
-        const loadingScreen4 = document.querySelector('.orderForm');
-        loadingScreen4.style.display = 'block';
-
-        const loadingScreen5 = document.querySelector('.orderDetailsForm');
-        loadingScreen5.style.display = 'none';
-    }
-
-    const myFunction4 = function () {
-        const loadingScreen = document.querySelector('.home_page');
-        loadingScreen.style.display = 'none';
-
-        const loadingScreen1 = document.querySelector('.customer_manage');
-        loadingScreen1.style.display = 'none';
-
-        const loadingScreen2 = document.querySelector('.itemManage');
-        loadingScreen2.style.display = 'none';
-
-        const loadingScreen3 = document.querySelector('.header');
-        loadingScreen3.style.display = 'block';
-
-        const loadingScreen4 = document.querySelector('.orderForm');
-        loadingScreen4.style.display = 'none';
-
-        const loadingScreen5 = document.querySelector('.orderDetailsForm');
-        loadingScreen5.style.display = 'block';
-    }
-
-    $(document).ready(function () {
-
-        const loadingScreen = document.querySelector('.home_page');
-        loadingScreen.style.display = 'none';
-
-        const loadingScreen1 = document.querySelector('.customer_manage');
-        loadingScreen1.style.display = 'none';
-
-        const loadingScreen2 = document.querySelector('.itemManage');
-        loadingScreen2.style.display = 'none';
-
-        const loadingScreen3 = document.querySelector('.header');
-        loadingScreen3.style.display = 'none';
-
-        const loadingScreen4 = document.querySelector('.orderForm');
-        loadingScreen4.style.display = 'none';
-
-        const loadingScreen5 = document.querySelector('.orderDetailsForm');
-        loadingScreen5.style.display = 'none';
-
-        var counter = 0;
-        var c = 0;
-        var i = setInterval(function () {
-            $(".loading-page>.counter>h1").html(c + "%");
-            $(".loading-page>.counter>hr").css("width", c + "%");
-            counter++;
-            c++;
-
-            if (counter == 102) {
-                clearInterval(i);
-                const loadingScreen = document.querySelector('.loading-page');
-                loadingScreen.style.display = 'none';
-                myFunction();
-
-            }
-        }, 50);
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var ctx = document.getElementById('barChart').getContext('2d');
-        var data = {
-            labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4'],
-            datasets: [{
-                label: 'Data Set 1',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
-                data: [12, 19, 3, 5]
-            }]
-        };
-
-        var myBarChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                maintainAspectRatio: false, // Allow chart to be responsive
-                responsive: true,           // Enable responsiveness
-            }
-        });
-    });
-
-    $('#navbar-nav>a').eq(0).on('click', function (){
-       myFunction();
-        $('#navbar-nav>a').eq(0).css("color", "black");
-        $('#navbar-nav>a').eq(1).css("color", "white");
-        $('#navbar-nav>a').eq(2).css("color", "white");
-        $('#navbar-nav>a').eq(3).css("color", "white");
-    });
-
-    $('#navbar-nav>a').eq(1).on('click', function (){
-        myFunction1();
-        $('#navbar-nav>a').eq(0).css("color", "white");
-        $('#navbar-nav>a').eq(1).css("color", "black");
-        $('#navbar-nav>a').eq(2).css("color", "white");
-        $('#navbar-nav>a').eq(3).css("color", "white");
-    });
-
-    $('#navbar-nav>a').eq(2).on('click', function (){
-        myFunction2();
-        $('#navbar-nav>a').eq(0).css("color", "white");
-        $('#navbar-nav>a').eq(1).css("color", "white");
-        $('#navbar-nav>a').eq(2).css("color", "black");
-        $('#navbar-nav>a').eq(3).css("color", "white");
-    });
-
-    $('#navbar-nav>a').eq(3).on('click', function (){
-        myFunction3();
-        $('#navbar-nav>a').eq(0).css("color", "white");
-        $('#navbar-nav>a').eq(1).css("color", "white");
-        $('#navbar-nav>a').eq(2).css("color", "white");
-        $('#navbar-nav>a').eq(3).css("color", "black");
-    });
-
-    $('#navbar-nav>a>button').on('click', function (){
-        myFunction4();
-        $('#navbar-nav>a').eq(0).css("color", "white");
-        $('#navbar-nav>a').eq(1).css("color", "white");
-        $('#navbar-nav>a').eq(2).css("color", "white");
-        $('#navbar-nav>a').eq(3).css("color", "white");
-    });
-
-</script>
 </body>
 </html>
