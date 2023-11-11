@@ -1,0 +1,61 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100);
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+h1, p, h2, h3, h4, ul, li, div {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 0;
+    overflow-x: hidden;
+    font-family: Roboto, serif;
+}
+
+.loading-page {
+    z-index: 20;
+    background: linear-gradient(to bottom, #9d4edd 15%, #c77dff 100%);
+    width: 1920px;
+    height: 944px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading-page .counter {
+    text-align: center;
+}
+.loading-page .counter p {
+    font-size: 40px;
+    font-weight: 100;
+    color: white;
+}
+.loading-page .counter h1 {
+    color: black;
+    font-size: 60px;
+    margin-top: -10px;
+}
+.loading-page .counter hr {
+    position: absolute;
+    top: 130px;
+    left: 0;
+    background: white;
+    border: none;
+    height: 5px;
+}
+.loading-page .counter {
+    position: relative;
+    width: 200px;
+}
+.loading-page .counter h1.abs {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.loading-page .counter .color {
+    width: 0px;
+    overflow: hidden;
+    color: white;
+}

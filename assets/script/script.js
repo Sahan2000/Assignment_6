@@ -1,129 +1,17 @@
-window.addEventListener('load', ()=>{
-    $('#navbar-nav>a').eq(0).css("color", "black");
-    $('#navbar-nav>a').eq(1).css("color", "white");
-    $('#navbar-nav>a').eq(2).css("color", "white");
-    $('#navbar-nav>a').eq(3).css("color", "white");
-});
-
-const myFunction = function () {
-    const loadingScreen = document.querySelector('.home_page');
-    loadingScreen.style.display = 'block';
-
-    const loadingScreen1 = document.querySelector('.customer_manage');
-    loadingScreen1.style.display = 'none';
-
-    const loadingScreen2 = document.querySelector('.itemManage');
-    loadingScreen2.style.display = 'none';
-
-    const loadingScreen3 = document.querySelector('.header');
-    loadingScreen3.style.display = 'block';
-
-    const loadingScreen4 = document.querySelector('.orderForm');
-    loadingScreen4.style.display = 'none';
-
-    const loadingScreen5 = document.querySelector('.orderDetailsForm');
-    loadingScreen5.style.display = 'none';
-}
-
-const myFunction1 = function () {
-    const loadingScreen = document.querySelector('.home_page');
-    loadingScreen.style.display = 'none';
-
-    const loadingScreen1 = document.querySelector('.customer_manage');
-    loadingScreen1.style.display = 'block';
-
-    const loadingScreen2 = document.querySelector('.itemManage');
-    loadingScreen2.style.display = 'none';
-
-    const loadingScreen3 = document.querySelector('.header');
-    loadingScreen3.style.display = 'block';
-
-    const loadingScreen4 = document.querySelector('.orderForm');
-    loadingScreen4.style.display = 'none';
-
-    const loadingScreen5 = document.querySelector('.orderDetailsForm');
-    loadingScreen5.style.display = 'none';
-}
-
-const myFunction2 = function () {
-    const loadingScreen = document.querySelector('.home_page');
-    loadingScreen.style.display = 'none';
-
-    const loadingScreen1 = document.querySelector('.customer_manage');
-    loadingScreen1.style.display = 'none';
-
-    const loadingScreen2 = document.querySelector('.itemManage');
-    loadingScreen2.style.display = 'block';
-
-    const loadingScreen3 = document.querySelector('.header');
-    loadingScreen3.style.display = 'block';
-
-    const loadingScreen4 = document.querySelector('.orderForm');
-    loadingScreen4.style.display = 'none';
-
-    const loadingScreen5 = document.querySelector('.orderDetailsForm');
-    loadingScreen5.style.display = 'none';
-}
-
-const myFunction3 = function () {
-    const loadingScreen = document.querySelector('.home_page');
-    loadingScreen.style.display = 'none';
-
-    const loadingScreen1 = document.querySelector('.customer_manage');
-    loadingScreen1.style.display = 'none';
-
-    const loadingScreen2 = document.querySelector('.itemManage');
-    loadingScreen2.style.display = 'none';
-
-    const loadingScreen3 = document.querySelector('.header');
-    loadingScreen3.style.display = 'block';
-
-    const loadingScreen4 = document.querySelector('.orderForm');
-    loadingScreen4.style.display = 'block';
-
-    const loadingScreen5 = document.querySelector('.orderDetailsForm');
-    loadingScreen5.style.display = 'none';
-}
-
-const myFunction4 = function () {
-    const loadingScreen = document.querySelector('.home_page');
-    loadingScreen.style.display = 'none';
-
-    const loadingScreen1 = document.querySelector('.customer_manage');
-    loadingScreen1.style.display = 'none';
-
-    const loadingScreen2 = document.querySelector('.itemManage');
-    loadingScreen2.style.display = 'none';
-
-    const loadingScreen3 = document.querySelector('.header');
-    loadingScreen3.style.display = 'block';
-
-    const loadingScreen4 = document.querySelector('.orderForm');
-    loadingScreen4.style.display = 'none';
-
-    const loadingScreen5 = document.querySelector('.orderDetailsForm');
-    loadingScreen5.style.display = 'block';
-}
-
 $(document).ready(function () {
 
-    const loadingScreen = document.querySelector('.home_page');
+    const loadingScreen = document.querySelector('.home');
     loadingScreen.style.display = 'none';
 
-    const loadingScreen1 = document.querySelector('.customer_manage');
-    loadingScreen1.style.display = 'none';
-
-    const loadingScreen2 = document.querySelector('.itemManage');
-    loadingScreen2.style.display = 'none';
-
-    const loadingScreen3 = document.querySelector('.header');
+    const loadingScreen3 = document.querySelector('#navBar');
     loadingScreen3.style.display = 'none';
 
-    const loadingScreen4 = document.querySelector('.orderForm');
+    const loadingScreen2 = document.querySelector('.customer');
+    loadingScreen2.style.display = 'none';
+
+    const loadingScreen4 = document.querySelector('.item');
     loadingScreen4.style.display = 'none';
 
-    const loadingScreen5 = document.querySelector('.orderDetailsForm');
-    loadingScreen5.style.display = 'none';
 
     var counter = 0;
     var c = 0;
@@ -143,70 +31,70 @@ $(document).ready(function () {
     }, 50);
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    var ctx = document.getElementById('barChart').getContext('2d');
-    var data = {
-        labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4'],
-        datasets: [{
-            label: 'Data Set 1',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1,
-            data: [12, 19, 3, 5]
-        }]
-    };
 
-    var myBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-            maintainAspectRatio: false, // Allow chart to be responsive
-            responsive: true,           // Enable responsiveness
-        }
-    });
-});
+const myFunction = function () {
+    const loadingScreen = document.querySelector('.home');
+    loadingScreen.style.display = 'block';
 
-$('#navbar-nav>a').eq(0).on('click', function (){
+    const loadingScreen3 = document.querySelector('#navBar');
+    loadingScreen3.style.display = 'block';
+
+    const loadingScreen2 = document.querySelector('.customer');
+    loadingScreen2.style.display = 'none';
+
+    const loadingScreen4 = document.querySelector('.item');
+    loadingScreen4.style.display = 'none';
+
+}
+
+const myFunction1 = function () {
+    const loadingScreen = document.querySelector('.home');
+    loadingScreen.style.display = 'none';
+
+    const loadingScreen3 = document.querySelector('#navBar');
+    loadingScreen3.style.display = 'block';
+
+    const loadingScreen2 = document.querySelector('.customer');
+    loadingScreen2.style.display = 'block';
+
+    const loadingScreen4 = document.querySelector('.item');
+    loadingScreen4.style.display = 'none';
+
+}
+
+const myFunction2 = function () {
+    const loadingScreen = document.querySelector('.home');
+    loadingScreen.style.display = 'none';
+
+    const loadingScreen3 = document.querySelector('#navBar');
+    loadingScreen3.style.display = 'block';
+
+    const loadingScreen2 = document.querySelector('.customer');
+    loadingScreen2.style.display = 'none';
+
+    const loadingScreen4 = document.querySelector('.item');
+    loadingScreen4.style.display = 'block';
+
+}
+
+$("#home_page").eq(0).on('click', function (){
     myFunction();
-    $('#navbar-nav>a').eq(0).css("color", "black");
-    $('#navbar-nav>a').eq(1).css("color", "white");
-    $('#navbar-nav>a').eq(2).css("color", "white");
-    $('#navbar-nav>a').eq(3).css("color", "white");
-});
+    $("#home_page").eq(0).css("color","black");
+    $("#customer_page").eq(0).css("color","white");
+    $("#item_page").eq(0).css("color", "white");
+})
 
-$('#navbar-nav>a').eq(1).on('click', function (){
+$("#customer_page").eq(0).on('click', function (){
     myFunction1();
-    $('#navbar-nav>a').eq(0).css("color", "white");
-    $('#navbar-nav>a').eq(1).css("color", "black");
-    $('#navbar-nav>a').eq(2).css("color", "white");
-    $('#navbar-nav>a').eq(3).css("color", "white");
-});
+    $("#home_page").eq(0).css("color","white");
+    $("#customer_page").eq(0).css("color","black");
+    $("#item_page").eq(0).css("color", "white");
+})
 
-$('#navbar-nav>a').eq(2).on('click', function (){
+$("#item_page").eq(0).on('click', function (){
     myFunction2();
-    $('#navbar-nav>a').eq(0).css("color", "white");
-    $('#navbar-nav>a').eq(1).css("color", "white");
-    $('#navbar-nav>a').eq(2).css("color", "black");
-    $('#navbar-nav>a').eq(3).css("color", "white");
-});
+    $("#home_page").eq(0).css("color","white");
+    $("#customer_page").eq(0).css("color","white");
+    $("#item_page").eq(0).css("color", "black");
+})
 
-$('#navbar-nav>a').eq(3).on('click', function (){
-    myFunction3();
-    $('#navbar-nav>a').eq(0).css("color", "white");
-    $('#navbar-nav>a').eq(1).css("color", "white");
-    $('#navbar-nav>a').eq(2).css("color", "white");
-    $('#navbar-nav>a').eq(3).css("color", "black");
-});
-
-$('#navbar-nav>a>button').on('click', function (){
-    myFunction4();
-    $('#navbar-nav>a').eq(0).css("color", "white");
-    $('#navbar-nav>a').eq(1).css("color", "white");
-    $('#navbar-nav>a').eq(2).css("color", "white");
-    $('#navbar-nav>a').eq(3).css("color", "white");
-});
