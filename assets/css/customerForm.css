@@ -50,14 +50,6 @@
     color: #FFFFFF;
 }
 
-.table-color>tr>th:last-child{
-    border-top-right-radius: 20px;
-}
-
-.table-color>tr>th:first-child{
-    border-top-left-radius: 20px;
-}
-
 .table{
     width: 700px;
 }

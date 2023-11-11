@@ -5,10 +5,11 @@
     padding: 20px 5%;
 }
 
-.item1{
+.order1{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: flex-start;
 }
 
 .col-lg-6{
@@ -51,5 +52,33 @@
 }
 
 .table{
-    width: 700px;
+    width: 500px;
+}
+
+.card{
+    width: 550px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#order_item_btn{
+    margin-left: 20px;
+}
+
+#order_btn{
+    margin: 20px;
+}
+
+.searchField{
+    width: 300px;
+    margin: 30px;
+}
+
+.searchBtn{
+    margin: 30px;
+    margin-left: 1px;
+}
+
+.d-flex{
+    justify-content: right;
 }

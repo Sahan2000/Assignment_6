@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/customerForm.css">
     <link rel="stylesheet" href="assets/css/homePage.css">
     <link rel="stylesheet" href="assets/css/itemForm.css">
+    <link rel="stylesheet" href="assets/css/orderForm.css">
 
 </head>
 <body>
@@ -212,7 +213,7 @@
                             <input type="text" class="form-control" id="itemId">
                         </div>
                         <div class="mb-3">
-                            <label for="customerName" class="form-label">item Description :</label>
+                            <label for="itemName" class="form-label">item Description :</label>
                             <input type="text" class="form-control" id="itemName">
                         </div>
                         <div class="mb-3">
@@ -234,7 +235,7 @@
             </div>
         </div>
 
-        <div class="container text-center m-5" id="viewItems">
+        <div class="container text-center m-5" id="selectItem">
 
             <div class="row">
                 <div class="text-center m-3">
@@ -259,6 +260,126 @@
     </div>
 </main>
 
+<!--Add Order page section-->
+<main id="order" class="order">
+    <form class="d-flex" role="search">
+        <input id="searchField" class="form-control me-3 searchField" type="search" placeholder="Search" aria-label="Search">
+        <button id="search" class="btn btn-outline-success searchBtn" type="button">Search</button>
+    </form>
+    <div class="order1">
+        <div class="col-md-4 mt-3">
+            <div class="card" id="invoiceDetails">
+                <div class="card-header text-center gradient-text">
+                    <h3>Invoice Details</h3>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="orderId" class="form-label">Order Id :</label>
+                    <input type="text" class="form-control" id="orderId" disabled>
+                </div>
+
+                <div class="m-3 col-md-11">
+                    <label for="orderDate" class="form-label">Order Date :</label>
+                    <input type="text" class="form-control" id="orderDate" disabled>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="customerId1" class="form-label">Customer Id</label>
+                    <select class="form-select" aria-label="Disabled select example" id="customerId1">
+                        <option selected>Select Customer Id</option>
+                    </select>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="customerName1" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control" id="customerName1" placeholder="Customer Name Here" disabled>
+                </div>
+
+                <div class="m-3 col-md-11">
+                    <label for="total" class="form-label">Total</label>
+                    <input type="number" class="form-control" id="total" placeholder="Total Here" disabled>
+                </div>
+
+                <div class="m-3 col-md-11">
+                    <label for="discount" class="form-label">Discount</label>
+                    <input type="number" class="form-control" id="discount" placeholder="Discount Here">
+                </div>
+
+                <div class="m-3 col-md-11">
+                    <label for="subTotal" class="form-label">Sub Total </label>
+                    <input type="number" class="form-control" id="subTotal" placeholder="Sub Total Here" disabled>
+                </div>
+
+                <div class="m-3 col-md-11">
+                    <label for="cash" class="form-label">Cash </label>
+                    <input type="number" class="form-control" id="cash" placeholder="Cash Here">
+                </div>
+
+                <div class="m-3 col-md-11">
+                    <label for="balance" class="form-label">Balance </label>
+                    <input type="number" class="form-control" id="balance" placeholder="Balance Here" disabled>
+                </div>
+
+
+                <div class="mt-3" id="order_btn">
+                    <button type="button" class="btn btn-outline-success">Purchase</button>
+                    <button type="button" class="btn btn-outline-primary">Update</button>
+                    <button type="button" class="btn btn-outline-danger">Delete</button>
+                    <button id="resetBtn" type="reset" class="btn btn-outline-warning">Reset</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3">
+            <div class="card" id="orderDetails1">
+                <div class="card-header text-center gradient-text">
+                    <h3>Select Items</h3>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="item_code1" class="form-label">Item Code</label>
+                    <select class="form-select" aria-label="Disabled select example" id="item_code1">
+                        <option selected>Select Item Code</option>
+                    </select>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="item_name1" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="item_name1" placeholder="Item Name Here" disabled>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="price1" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="price1" placeholder="Price Here" disabled>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="qty_on_hand" class="form-label">Qty on Hand</label>
+                    <input type="number" class="form-control" id="qty_on_hand" placeholder="Qty on hand Here" disabled>
+                </div>
+                <div class="m-3 col-md-11">
+                    <label for="getQty" class="form-label">Getting Qty</label>
+                    <input type="number" class="form-control" id="getQty" placeholder="Qty Here">
+                </div>
+                <div class="mt-3" id="order_item_btn">
+                    <button type="button" class="btn btn-outline-success">Add</button>
+                    <button type="button" class="btn btn-outline-primary">Update</button>
+                    <button type="button" class="btn btn-outline-danger">Remove</button>
+                    <button type="reset" class="btn btn-outline-warning">Reset</button>
+                </div>
+                <div class="col m-3">
+                    <table class="table" id="item-order-table">
+                        <thead class="table-color">
+                        <tr>
+                            <th scope="col">Item Code</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Price Per Kg</th>
+                            <th scope="col">Qty On Hand</th>
+                            <th scope="col">Qty</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 <script src="assets/script/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -269,6 +390,7 @@
 
 <script type="module" src="controller/CustomerController.js"></script>
 <script type="module" src="controller/ItemController.js"></script>
+<script type="module" src="controller/OrderController.js"></script>
 
 
 </body>

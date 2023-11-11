@@ -12,6 +12,9 @@ $(document).ready(function () {
     const loadingScreen4 = document.querySelector('.item');
     loadingScreen4.style.display = 'none';
 
+    const loadingScreen5 = document.querySelector('.order');
+    loadingScreen5.style.display = 'none';
+
 
     var counter = 0;
     var c = 0;
@@ -45,6 +48,9 @@ const myFunction = function () {
     const loadingScreen4 = document.querySelector('.item');
     loadingScreen4.style.display = 'none';
 
+    const loadingScreen5 = document.querySelector('.order');
+    loadingScreen5.style.display = 'none';
+
 }
 
 const myFunction1 = function () {
@@ -59,6 +65,9 @@ const myFunction1 = function () {
 
     const loadingScreen4 = document.querySelector('.item');
     loadingScreen4.style.display = 'none';
+
+    const loadingScreen5 = document.querySelector('.order');
+    loadingScreen5.style.display = 'none';
 
 }
 
@@ -75,6 +84,27 @@ const myFunction2 = function () {
     const loadingScreen4 = document.querySelector('.item');
     loadingScreen4.style.display = 'block';
 
+    const loadingScreen5 = document.querySelector('.order');
+    loadingScreen5.style.display = 'none';
+
+}
+
+const myFunction3 = function () {
+    const loadingScreen = document.querySelector('.home');
+    loadingScreen.style.display = 'none';
+
+    const loadingScreen3 = document.querySelector('#navBar');
+    loadingScreen3.style.display = 'block';
+
+    const loadingScreen2 = document.querySelector('.customer');
+    loadingScreen2.style.display = 'none';
+
+    const loadingScreen4 = document.querySelector('.item');
+    loadingScreen4.style.display = 'none';
+
+    const loadingScreen5 = document.querySelector('.order');
+    loadingScreen5.style.display = 'block';
+
 }
 
 $("#home_page").eq(0).on('click', function (){
@@ -82,6 +112,7 @@ $("#home_page").eq(0).on('click', function (){
     $("#home_page").eq(0).css("color","black");
     $("#customer_page").eq(0).css("color","white");
     $("#item_page").eq(0).css("color", "white");
+    $("#order_page").eq(0).css("color","white");
 })
 
 $("#customer_page").eq(0).on('click', function (){
@@ -89,6 +120,7 @@ $("#customer_page").eq(0).on('click', function (){
     $("#home_page").eq(0).css("color","white");
     $("#customer_page").eq(0).css("color","black");
     $("#item_page").eq(0).css("color", "white");
+    $("#order_page").eq(0).css("color","white");
 })
 
 $("#item_page").eq(0).on('click', function (){
@@ -96,5 +128,14 @@ $("#item_page").eq(0).on('click', function (){
     $("#home_page").eq(0).css("color","white");
     $("#customer_page").eq(0).css("color","white");
     $("#item_page").eq(0).css("color", "black");
+    $("#order_page").eq(0).css("color","white");
+})
+
+$("#order_page").eq(0).on('click', function (){
+    myFunction3();
+    $("#home_page").eq(0).css("color","white");
+    $("#customer_page").eq(0).css("color","white");
+    $("#item_page").eq(0).css("color", "white");
+    $("#order_page").eq(0).css("color","black");
 })
 
