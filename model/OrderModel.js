@@ -1,10 +1,11 @@
 export class OrderModel{
-    constructor(orderId,orderDate,customerId,total,discount,cash) {
-        this.orderId = orderId;
-        this.orderDate = orderDate;
-        this.customerId = customerId;
-        this.total = total;
-        this.discount = discount;
-        this.cash = cash;
+    constructor(order_date,order_id,customer_id,total,discount,cash) {
+        this.order_date=order_date;
+        this.order_id=order_id;
+        this.customer_id=customer_id;
+        this.total=total;
+        this.discount=discount;
+        this.cash=cash;
     }
+
 }

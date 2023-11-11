@@ -209,7 +209,7 @@
                 <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
                     <form>
                         <div class="mb-3">
-                            <label for="customerId" class="form-label">item code :</label>
+                            <label for="itemId" class="form-label">item code :</label>
                             <input type="text" class="form-control" id="itemId">
                         </div>
                         <div class="mb-3">
@@ -243,6 +243,11 @@
                 </div>
             </div>
 
+            <form class="d-flex" role="search">
+                <input id="searchField1" class="form-control me-3 searchField" type="search" placeholder="Search" aria-label="Search">
+                <button id="search1" class="btn btn-outline-success searchBtn" type="button">Search</button>
+            </form>
+
             <div class="col col-lg-6 col-md-12 col-sm-12 col-12">
                 <table class="table">
                     <thead class="table-color">
@@ -273,23 +278,23 @@
                     <h3>Invoice Details</h3>
                 </div>
                 <div class="m-3 col-md-11">
-                    <label for="orderId" class="form-label">Order Id :</label>
-                    <input type="text" class="form-control" id="orderId" disabled>
+                    <label for="order_id" class="form-label">Order Id :</label>
+                    <input type="text" class="form-control" id="order_id" disabled>
                 </div>
 
                 <div class="m-3 col-md-11">
-                    <label for="orderDate" class="form-label">Order Date :</label>
-                    <input type="text" class="form-control" id="orderDate" disabled>
+                    <label for="order_date" class="form-label">Order Date :</label>
+                    <input type="text" class="form-control" id="order_date" disabled>
                 </div>
                 <div class="m-3 col-md-11">
-                    <label for="customerId1" class="form-label">Customer Id</label>
-                    <select class="form-select" aria-label="Disabled select example" id="customerId1">
+                    <label for="customer_id1" class="form-label">Customer Id</label>
+                    <select class="form-select" aria-label="Disabled select example" id="customer_id1">
                         <option selected>Select Customer Id</option>
                     </select>
                 </div>
                 <div class="m-3 col-md-11">
-                    <label for="customerName1" class="form-label">Customer Name</label>
-                    <input type="text" class="form-control" id="customerName1" placeholder="Customer Name Here" disabled>
+                    <label for="customer_name1" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control" id="customer_name1" placeholder="Customer Name Here" disabled>
                 </div>
 
                 <div class="m-3 col-md-11">
@@ -303,13 +308,13 @@
                 </div>
 
                 <div class="m-3 col-md-11">
-                    <label for="subTotal" class="form-label">Sub Total </label>
-                    <input type="number" class="form-control" id="subTotal" placeholder="Sub Total Here" disabled>
+                    <label for="sub_total" class="form-label">Sub Total </label>
+                    <input type="number" class="form-control" id="sub_total" placeholder="Sub Total Here" disabled>
                 </div>
 
                 <div class="m-3 col-md-11">
-                    <label for="cash" class="form-label">Cash </label>
-                    <input type="number" class="form-control" id="cash" placeholder="Cash Here">
+                    <label for="Cash" class="form-label">Cash </label>
+                    <input type="number" class="form-control" id="Cash" placeholder="Cash Here">
                 </div>
 
                 <div class="m-3 col-md-11">
@@ -319,10 +324,10 @@
 
 
                 <div class="mt-3" id="order_btn">
-                    <button type="button" class="btn btn-outline-success">Purchase</button>
-                    <button type="button" class="btn btn-outline-primary">Update</button>
-                    <button type="button" class="btn btn-outline-danger">Delete</button>
-                    <button id="resetBtn" type="reset" class="btn btn-outline-warning">Reset</button>
+                    <button id="submitBtn2" type="button" class="btn btn-outline-success">Purchase</button>
+                    <button id="updateBtn2" type="button" class="btn btn-outline-primary">Update</button>
+                    <button id="deleteBtn2" type="button" class="btn btn-outline-danger">Delete</button>
+                    <button id="resetBtn2" type="reset" class="btn btn-outline-warning">Reset</button>
                 </div>
             </div>
         </div>
@@ -355,10 +360,10 @@
                     <input type="number" class="form-control" id="getQty" placeholder="Qty Here">
                 </div>
                 <div class="mt-3" id="order_item_btn">
-                    <button type="button" class="btn btn-outline-success">Add</button>
-                    <button type="button" class="btn btn-outline-primary">Update</button>
-                    <button type="button" class="btn btn-outline-danger">Remove</button>
-                    <button type="reset" class="btn btn-outline-warning">Reset</button>
+                    <button id="addBtn" type="button" class="btn btn-outline-success">Add</button>
+                    <button id="UpdateBtn3" type="button" class="btn btn-outline-primary">Update</button>
+                    <button id="removeBtn" type="button" class="btn btn-outline-danger">Remove</button>
+                    <button id="resetItemDetailsBtn" type="reset" class="btn btn-outline-warning">Reset</button>
                 </div>
                 <div class="col m-3">
                     <table class="table" id="item-order-table">
@@ -371,8 +376,7 @@
                             <th scope="col">Qty</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>

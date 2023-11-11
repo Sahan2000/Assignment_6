@@ -1,80 +1,80 @@
-import {order_db} from "../db/db.js";
-import {OrderModel} from "../model/OrderModel.js";
-
-import {order_details_db} from "../db/db.js";
-import {OrderDetailsModel} from "../model/OrderDetailsModel.js";
+import {item_db} from "../db/db.js";
+import {ItemModel} from "../model/ItemModel.js";
 
 import {customer_db} from "../db/db.js";
 import {CustomerModel} from "../model/CustomerModel.js";
 
-import {item_db} from "../db/db.js";
-import {ItemModel} from "../model/ItemModel.js";
+import {order_db} from "../db/db.js";
+import {OrderModel} from "../model/OrderModel.js";
 
-let purchase = $("#order_btn>button").eq(0);
-let update = $("#order_btn>button").eq(1);
-let delete_btn = $("#order_btn>button").eq(2);
-let reset = $("#resetBtn").eq(0);
+import {order_details_db} from "../db/db.js";
+import {orderModel} from "../model/OrderDetailsModel.js";
 
-let orderId = $("#orderId");
-let orderDate = $("#orderDate");
-let customerIdCB = $("#customerId1");
-let customerName = $("#customerName1");
-let total = $("#total");
-let discount = $("#discount");
-let subTotal = $("#subTotal");
-let cash = $("#cash");
-let balance = $("#balance");
+let customerIdCB = $('#customer_id1');
+let itemIdCB = $('#item_code1');
+let orderId=$('#order_id');
+let itemName=$('#item_name1');
+let price=$('#price1');
+let qtyOnHand=$('#qty_on_hand');
+let qty=$('#getQty');
+let customerName=$('#customer_name1');
+let total=$('#total');
+let discountInput = $('#discount');
+let subTotalInput = $('#sub_total');
+let cashInput=$('#Cash');
+let balanceInput=$('#balance');
 
-let add = $("#order_item_btn>button").eq(0);
-let updateItem = $("#order_item_btn>button").eq(1);
-let remove = $("#order_item_btn>button").eq(2);
-let resetItem = $("#order_item_btn>button").eq(3);
 
-let itemCodeCB = $("#item_code1");
-let itemName = $("#item_name1");
-let price = $("#price1");
-let qtyOnHand = $("#qty_on_hand");
-let getOrderQty = $("#getQty");
-
-let searchBtn = $("#search");
-let searchInput = $("#searchField");
+let add = $('#addBtn');
+let resetItemDetails=$('#resetItemDetailsBtn');
+let submitBtn=$('#submitBtn2');
+let updateBtn=$('#updateBtn2');
+let deleteBtn=$('#deleteBtn2');
+let resetBtn=$('#resetBtn2');
+let updateBtn2=$('#UpdateBtn3');
+let removeBtn=$('#removeBtn');
 
 let items = [];
 
+let searchBtn=$('#search');
+let searchField=$('#searchField');
+
 let search_order=true;
-
-function generateOrderId(){
-    let highestOrderId = 0;
-
-    for (let i = 0; i < order_db.length; i++) {
-        // Extract the numeric part of the item code
-        const numericPart = parseInt(order_db[i].order_id.split('-')[1]);
-
-        // Check if the numeric part is greater than the current highest
-        if (!isNaN(numericPart) && numericPart > highestOrderId) {
-            highestOrderId = numericPart;
-        }
-    }
-
-    // Increment the highest numeric part and format as "item-XXX"
-    return `order-${String(highestOrderId + 1).padStart(3, '0')}`;
+/*generate current date*/
+function generateCurrentDate(){
+    $("#order_date").val(getCurrentDate());
 }
 
-$("#order_page").eq(0).on('click', function (){
-    reset.click();
-    update.prop("disabled", true);
-    delete_btn.prop("disabled", true);
-    remove.prop("disabled",true);
-    updateItem.prop("disabled",true);
-    /*searchField.attr("placeholder", "Search Order Id Here");*/
-})
+function getCurrentDate() {
+    // Get the current date
+    var currentDate = new Date();
 
-function generateCurrentDate() {
-    $("#orderDate").val(new Date().toISOString().slice(0, 10));
+    // Format the date as desired
+    var formattedDate = currentDate.toLocaleDateString();
+
+    // Display the date (you can modify this based on how you want to use it)
+    console.log("Current Date: " + formattedDate);
+    return formattedDate;
 }
 
+
+$('#order_page').on('click', function() {
+    resetBtn.click();
+    updateBtn.prop("disabled", true);
+    deleteBtn.prop("disabled", true);
+    removeBtn.prop("disabled",true);
+    updateBtn2.prop("disabled",true);
+    searchField.attr("placeholder", "Search Order Id Here");
+
+});
+
+/*Function to populate the CustomerId Combo Box*/
 function populateCustomerIDs() {
+
+    // Clear existing options except the default one
     customerIdCB.find("option:not(:first-child)").remove();
+
+    // Iterate through the customerArray and add options to the select element
     for (let i = 0; i < customer_db.length; i++) {
         customerIdCB.append($("<option>", {
             value: customer_db[i].customer_id,
@@ -83,93 +83,100 @@ function populateCustomerIDs() {
     }
 }
 
-customerIdCB.on('change', function (){
-    let selectedValue = $(this).val();
-
-    let customerObj = $.grep(customer_db, function (customer){
-        return customer.customer_id === selectedValue;
-    })
-
-    if (customerObj.length > 0){
-        customerName.val(customerObj[0].customer_name);
-    }
-})
-
+/*Function to populate the ItemId Combo Box*/
 function populateItemIDs() {
-    itemCodeCB.find("option:not(:first-child)").remove();
-    for (let i= 0; i < item_db.length; i++){
-        itemCodeCB.append($("<option>", {
+
+    // Clear existing options except the default one
+    itemIdCB.find("option:not(:first-child)").remove();
+
+    // Iterate through the customerArray and add options to the select element
+    for (let i = 0; i < item_db.length; i++) {
+        itemIdCB.append($("<option>", {
             value: item_db[i].itemCode,
             text: item_db[i].itemCode
         }));
     }
 }
 
-itemCodeCB.on('change', function (){
+function generateOrderId() {
+    let highestOrderId = 0;
+
+    for (let i = 0; i < order_db.length; i++) {
+        // Extract the numeric part of the item code
+        const numericPart = parseInt(order_db[i].order_id.split('-')[1]);
+
+        // Check if the numeric part is greater than the current highest
+        if (!isNaN(numericPart) && numericPart > highestOrderId) {
+
+            highestOrderId = numericPart;
+
+
+        }
+    }
+    // Increment the highest numeric part and format as "item-XXX"
+    return `order-${String(highestOrderId + 1).padStart(3, '0')}`;
+}
+
+itemIdCB.on("change", function() {
+    // Capture the selected value in a variable
     let selectedValue = $(this).val();
 
-    let itemObj = $.grep(item_db, function (item){
+    let itemObj = $.grep(item_db, function(item) {
         return item.itemCode === selectedValue;
     });
 
-    if (itemObj.length > 0){
-        itemName.val(itemObj[0].itemName);
+    if (itemObj.length > 0) {
+        // Access the first element in the filtered array
+        itemName.val(itemObj[0].itemName); // Assuming there is an 'item_name' property
         price.val(itemObj[0].price);
         qtyOnHand.val(itemObj[0].qty);
     }
-})
 
-function resetSelectItemColumns(){
-    itemCodeCB.val('');
-    itemName.val('');
-    price.val('');
-    qtyOnHand.val('');
-    getOrderQty.val('');
-}
+    // Check if the item is already in the items array
+    let existingItem = items.find(item => item.itemCode === selectedValue);
 
-reset.on("click", function () {
-    // Reset the form fields to their initial state
-    generateCurrentDate();
-    populateCustomerIDs();
-    populateItemIDs();
-    orderId.val(generateOrderId());
-    $("#total").val('');       // Reset the total
-    $("#discount").val('');    // Reset the discount
-    $("#cash").val('');        // Reset the cash input
-    customerName.val('');
-    itemName.val('');
-    price.val('');
-    qtyOnHand.val('');
-    total.val('');
-    discount.val('');
-    cash.val('');
-    subTotal.val('');
-    balance.val('');
-
-    /*Clear the items array*/
-    items = [];
-
-    /*Clear the item order table*/
-    $("#item-order-table tbody").empty();
-
-    update.prop("disabled", true);
-    delete_btn.prop("disabled", true);
-    purchase.prop("disabled",false);
-
+    if (existingItem) {
+        updateBtn2.prop("disabled", false);
+        removeBtn.prop("disabled",false);
+        add.prop("disabled", true);
+        qty.val(existingItem.qtyValue);
+    }
 });
 
-function showValidationError(title, text) {
-    Swal.fire({
-        icon: 'error',
-        title: title,
-        text: text,
-        footer: '<a href="">Why do I have this issue?</a>'
+customerIdCB.on("change", function() {
+    // Capture the selected value in a variable
+    let selectedValue = $(this).val();
+
+    let customerObj = $.grep(customer_db, function(customer) {
+        return customer.customer_id === selectedValue;
+    });
+
+    if (customerObj.length > 0) {
+        // Access the first element in the filtered array
+        customerName.val(customerObj[0].customer_name);
+    }
+});
+
+/* Function to populate the table with items*/
+function populateItemTable() {
+    $('tbody').eq(2).empty();
+    items.map((item) => {
+        $('tbody').eq(2).append(
+            `<tr>
+                <th scope="row">${item.itemCode}</th>
+                <td>${item.itemName}</td>
+                <td>${item.priceValue}</td>
+                <td>${item.qtyOnHand}</td>
+                <td>${item.qtyValue}</td>
+            </tr>`
+        );
     });
 }
 
-add.on('click', function (){
-    let itemCodeValue = itemCodeCB.val();
-    let qtyValue = parseInt(getOrderQty.val());
+/*Event handler for the "Add" button*/
+add.on("click", function () {
+    let itemCodeValue = itemIdCB.val();
+    let qtyValue = parseInt(qty.val());
 
     if (qtyOnHand.val() >= qtyValue) {
         let itemNameValue = itemName.val();
@@ -187,56 +194,164 @@ add.on('click', function (){
 
         /*Populate the Item table*/
         populateItemTable();
+
+        /*Reset the item details*/
+        resetItemDetails.click();
     } else {
         showValidationError('Invalid Input', 'Out of stock');
     }
 
     total.val(calculateTotal());
-    /*Reset the item details*/
-    resetSelectItemColumns();
-})
 
-function populateItemTable() {
-    $('tbody').eq(2).empty();
-    items.map((item) => {
-        $('tbody').eq(2).append(
-            `<tr>
-                <th scope="row">${item.itemCode}</th>
-                <td>${item.itemName}</td>
-                <td>${item.priceValue}</td>
-                <td>${item.qtyOnHand}</td>
-                <td>${item.qtyValue}</td>
-            </tr>`
-        );
+});
+
+updateBtn2.on("click",function () {
+
+    let itemCodeValue = itemIdCB.val();
+    let qtyValue = parseInt(qty.val());
+
+    /*Check if the item is already in the items array*/
+    let existingItem = items.find(item => item.itemCode === itemCodeValue);
+
+    if (existingItem) {
+        if (qtyOnHand.val() >= qtyValue) {
+            /*Update the quantity of the existing item*/
+            existingItem.qtyValue = qtyValue;
+
+            /*Populate the Item table*/
+            populateItemTable();
+
+            /*Reset the item details*/
+            resetItemDetails.click();
+        } else {
+            showValidationError('Invalid Input', 'Out of stock');
+        }
+    }
+
+    total.val(calculateTotal());
+
+});
+
+function showValidationError(title, text) {
+    Swal.fire({
+        icon: 'error',
+        title: title,
+        text: text,
+        footer: '<a href="">Why do I have this issue?</a>'
     });
 }
 
-function calculateTotal(){
+resetItemDetails.on("click", function () {
+    itemIdCB.val('Select Item Code');
+    qty.val('');
+    itemName.val('');
+    price.val('');
+    qtyOnHand.val('');
+    updateBtn2.prop("disabled", true);
+    removeBtn.prop("disabled",true);
+    add.prop("disabled", false);
+});
+
+function calculateTotal() {
     let total = 0;
-    items.forEach((item)=>{
+    items.forEach((item) => {
         total += item.priceValue * item.qtyValue;
     });
     return total;
 }
 
-discount.on('input', function (){
-    const discountValue = parseFloat(discount.val()) || 0; // Get the discount value as a float
+discountInput.on("input", function() {
+    const discountValue = parseFloat(discountInput.val()) || 0; // Get the discount value as a float
     const totalValue = calculateTotal(); // Calculate the total based on your logic
     const subtotalValue = totalValue - (totalValue * (discountValue / 100)); // Calculate the subtotal
 
     // Update the sub-total input field
-    subTotal.val(subtotalValue);
-})
+    subTotalInput.val(subtotalValue);
+});
 
-cash.on('input', function (){
-    const cashValue = parseFloat(cash.val()) || 0;
-    const totalValue = parseFloat(subTotal.val()) || 0;
-    const balanceValue = cashValue - totalValue;
+cashInput.on("input", function() {
+    const cashValue = parseFloat(cashInput.val()) || 0; // Get the cash value as a float
+    const totalValue = parseFloat(subTotalInput.val())||0; // Calculate the total based on your logic
+    const balanceValue = cashValue - totalValue; // Calculate the balance
 
-    balance.val(balanceValue);
-})
+    // Update the balance input field
+    balanceInput.val(balanceValue);
+});
 
-function resetInvoiceDetails(){
+submitBtn.on("click", function (e) {
+
+    e.preventDefault();
+
+    // Get the data needed for the order
+    const orderDate = $("#order_date").val();
+    const orderId = $("#order_id").val();
+    const customerId = $("#customer_id1").val();
+    const total = $("#total").val();
+    const discount = $("#discount").val();
+    const cash = $("#Cash").val();
+
+    // Validate order data
+    if (!orderDate) {
+        showValidationError('Null Input', 'Please select an order date');
+        return;
+    }
+
+    if (!orderId) {
+        showValidationError('Null Input', 'Please generate an order ID');
+        return;
+    }
+
+    if (customerId === "Select Customer Id") {
+        showValidationError('Invalid Input', 'Please select a customer');
+        return;
+    }
+
+    if (!total || parseFloat(total) <= 0) {
+        showValidationError('Invalid Input', 'Total must be a positive number');
+        return;
+    }
+
+    if (!cash || parseFloat(cash) < 0) {
+        showValidationError('Invalid Input', 'Cash amount must be a positive number');
+        return;
+    }
+
+    const discountValue = parseFloat(discount);
+    if (isNaN(discountValue) || discountValue < 0 || discountValue > 100) {
+        showValidationError('Invalid Input', 'Discount must be a number between 0 and 100');
+        return;
+    }
+
+    // Create an order instance
+    const order = new OrderModel(orderDate, orderId, customerId, total, discount, cash);
+
+    // Add the order to the order_db array
+    order_db.push(order);
+
+    // Loop through the items in your order details
+    items.forEach(item => {
+        const orderDetail = new orderModel(orderId, item.itemCode, item.priceValue, item.qtyValue);
+        order_details_db.push(orderDetail);
+
+        item_db.forEach((itemObj) => {
+            if (itemObj.itemCode === item.itemCode) {
+                itemObj.qty -= item.qtyValue;
+            }
+        });
+    });
+
+
+    // Display a success message
+    Swal.fire(
+        'Order Placed Successfully!',
+        'The order has been saved.',
+        'success'
+    );
+
+    resetBtn.click();
+});
+
+resetBtn.on("click", function () {
     // Reset the form fields to their initial state
     generateCurrentDate();
     populateCustomerIDs();
@@ -244,16 +359,16 @@ function resetInvoiceDetails(){
     orderId.val(generateOrderId());
     $("#total").val('');       // Reset the total
     $("#discount").val('');    // Reset the discount
-    $("#cash").val('');        // Reset the cash input
+    $("#Cash").val('');        // Reset the cash input
     customerName.val('');
     itemName.val('');
     price.val('');
     qtyOnHand.val('');
     total.val('');
-    discount.val('');
-    cash.val('');
-    subTotal.val('');
-    balance.val('');
+    discountInput.val('');
+    cashInput.val('');
+    subTotalInput.val('');
+    balanceInput.val('');
 
     /*Clear the items array*/
     items = [];
@@ -261,118 +376,135 @@ function resetInvoiceDetails(){
     /*Clear the item order table*/
     $("#item-order-table tbody").empty();
 
-    update.prop("disabled", true);
-    delete_btn.prop("disabled", true);
-    purchase.prop("disabled",false);
-}
+    updateBtn.prop("disabled", true);
+    deleteBtn.prop("disabled", true);
+    submitBtn.prop("disabled",false);
 
-purchase.on('click', function (){
-    let orderIdValue = orderId.val();
-    let orderDateValue = orderDate.val();
-    let customerIdValue = customerIdCB.val();
-    let totalValue = total.val();
-    let discountValue = discount.val();
-    let cashValue = cash.val();
+});
 
-    // Validate order data
-    if (!orderDateValue) {
-        showValidationError('Null Input', 'Please select an order date');
-        return;
-    }
+deleteBtn.on("click", function () {
+    /*Assuming you have an orderId that you want to delete*/
+    const orderIdToDelete = orderId.val();
 
-    if (!orderIdValue) {
-        showValidationError('Null Input', 'Please generate an order ID');
-        return;
-    }
-
-    if (customerIdValue === "Select Customer Id") {
-        showValidationError('Invalid Input', 'Please select a customer');
-        return;
-    }
-
-    if (!totalValue || parseFloat(total) <= 0) {
-        showValidationError('Invalid Input', 'Total must be a positive number');
-        return;
-    }
-
-    if (!cashValue || parseFloat(cash) < 0) {
-        showValidationError('Invalid Input', 'Cash amount must be a positive number');
-        return;
-    }
-
-    const discountValue1 = parseFloat(discountValue);
-    if (isNaN(discountValue1) || discountValue1 < 0 || discountValue1 > 100) {
-        showValidationError('Invalid Input', 'Discount must be a number between 0 and 100');
-        return;
-    }
-
-    const order = new OrderModel(orderIdValue,orderDateValue,customerIdValue,totalValue,discountValue,cashValue);
-
-    order_db.push(order);
-
-    items.forEach((item)=>{
-        const orderDetails = new OrderDetailsModel(orderIdValue,item.itemCode,item.priceValue,item.qtyValue);
-        order_details_db.push(orderDetails);
-
-        item_db.forEach((itemObj)=>{
-            if (itemObj.itemCode === item.itemCode){
-                itemObj.qty -= item.qtyValue;
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Delete'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            /* Find and remove the order with the matching orderId from the order_db array*/
+            const indexToDelete = order_db.findIndex(order => order.order_id === orderIdToDelete);
+            if (indexToDelete !== -1) {
+                order_db.splice(indexToDelete, 1);
             }
-        });
+
+            /*Remove the corresponding order details from order_details_db (if needed)*/
+            for (let i = 0; i < order_details_db.length; i++) {
+                if(order_details_db[i].order_id===orderIdToDelete){
+                    order_details_db.splice(i, 1);
+                }
+
+            }
+
+            items.forEach(item => {
+                item_db.forEach((itemObj) => {
+                    if (itemObj.itemCode === item.itemCode) {
+                        itemObj.qty += item.qtyValue;
+                    }
+                });
+            });
+
+            resetBtn.click();
+
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+
+        }
     });
 
-    Swal.fire(
-        'Order Placed Successfully!',
-        'The order has been saved.',
-        'success'
-    );
+});
 
-    resetInvoiceDetails();
-})
+removeBtn.on("click", function () {
+    let index = items.findIndex(item => item.itemCode === itemIdCB.val());
+    items.splice(index, 1);
+    populateItemTable();
+    resetItemDetails.click();
+    total.val(calculateTotal());
+});
 
-function populateFields(orderIdValue) {
+$('#item-order-table').on('click', 'tbody tr', function() {
+
+    let itemCodeValue = $(this).find('th').text();
+    let itemNameValue = $(this).find('td:eq(0)').text();
+    let priceValue = $(this).find('td:eq(1)').text();
+    let qtyOnHandValue = $(this).find('td:eq(2)').text();
+    let qtyValue=$(this).find('td:eq(3)').text();
+
+    itemIdCB.val(itemCodeValue);
+    itemName.val(itemNameValue);
+    price.val(priceValue);
+    qtyOnHand.val(qtyOnHandValue);
+    qty.val(qtyValue);
+
+    updateBtn2.prop("disabled", false);
+    removeBtn.prop("disabled",false);
+    add.prop("disabled", true);
+
+
+});
+
+/*Modify the event handler for clicking on a row in the order details table*/
+function populateFields(orderIdValue){
+
     /*Find the corresponding order in the order_db array*/
-    let order = order_db.find(order => order.orderId === orderIdValue);
+    let order = order_db.find(order => order.order_id === orderIdValue);
 
     /*Check if the order is found*/
     if (order) {
         /*Populate the order details on the order page*/
-        orderId.val(order.orderId);
-        orderDate.val(order.orderDate);
+        orderId.val(order.order_id);
+        $("#order_date").val(order.order_date);
         customerIdCB.val(order.customer_id);
         total.val(order.total);
-        discount.val(order.discount);
+        discountInput.val(order.discount);
 
         /*Calculate the subtotal and update the input*/
-        const discountValue = parseFloat(discount.val()) || 0;
+        const discountValue = parseFloat(discountInput.val()) || 0;
         const totalValue = parseFloat(total.val()) || 0;
 
         const subtotalValue = totalValue - (totalValue * (discountValue / 100));
-        subTotal.val(subtotalValue.toFixed(2)); // Use toFixed to round to two decimal places
+        subTotalInput.val(subtotalValue.toFixed(2)); // Use toFixed to round to two decimal places
 
-        cash.val(order.cash);
+        cashInput.val(order.cash);
 
         /*Calculate the balance and update the input*/
-        const cashValue = parseFloat(cash.val()) || 0;
+        const cashValue = parseFloat(cashInput.val()) || 0;
         const balanceValue = cashValue - subtotalValue;
-        balance.val(balanceValue.toFixed(2)); // Use toFixed to round to two decimal places
+        balanceInput.val(balanceValue.toFixed(2)); // Use toFixed to round to two decimal places
 
         /*Populate the customer name based on the selected customer ID*/
         let customerObj = $.grep(customer_db, function(customer) {
-            return customer.customer_id === order.customerId;
+            return customer.customer_id === order.customer_id;
         });
 
         if (customerObj.length > 0) {
             /*Access the first element in the filtered array*/
-            customerName.val(customerObj[0].customer_name);
+            customerName.val(customerObj[0].name);
         }
 
         /*Populate the items table on the order page*/
         items = order_details_db
-            .filter(orderDetail => orderDetail.orderId === orderIdValue)
+            .filter(orderDetail => orderDetail.order_id === orderIdValue)
             .map(orderDetail => {
                 /*Find the corresponding item in the item_db array*/
-                let item = item_db.find(item => item && item.itemCode === orderDetail.itemCode);
+                let item = item_db.find(item => item && item.itemCode === orderDetail.item_id);
 
                 if (item) {
                     return {
@@ -384,7 +516,7 @@ function populateFields(orderIdValue) {
                     };
                 } else {
                     /*Handle the case where the item is not found*/
-                    console.error(`Item not found for item code: ${orderDetail.itemCode}`);
+                    console.error(`Item not found for item code: ${orderDetail.item_code}`);
                     return null; /*or handle it accordingly*/
                 }
             });
@@ -394,9 +526,9 @@ function populateFields(orderIdValue) {
 
         populateItemTable();
 
-        update.prop("disabled", false);
-        delete_btn.prop("disabled", false);
-        purchase.prop("disabled",true);
+        updateBtn.prop("disabled", false);
+        deleteBtn.prop("disabled", false);
+        submitBtn.prop("disabled",true);
 
     } else {
         /*Show an error message if the order is not found*/
@@ -404,9 +536,10 @@ function populateFields(orderIdValue) {
     }
 }
 
-searchBtn.on("click",function (e){
+searchBtn.on("click",function (){
     if(search_order){
-        populateFields(searchInput.val());
-        searchInput.val('');
+        populateFields(searchField.val());
+        searchField.val('');
     }
 });
+
