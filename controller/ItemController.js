@@ -51,7 +51,7 @@ function generateItemCode() {
     }
 
     // Increment the highest numeric part and format as "item-XXX"
-    return `item-${String(highestItemCode + 1).padStart(3, '0')}`;
+    return `I-${String(highestItemCode + 1).padStart(3, '0')}`;
 }
 
 function resetColumns() {

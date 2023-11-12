@@ -62,7 +62,7 @@ function generateCustomerId(){
     }
 
     // Increment the highest numeric part and format as "item-XXX"
-    return `cust-${String(highestCustId + 1).padStart(3, '0')}`;
+    return `C-${String(highestCustId + 1).padStart(3, '0')}`;
 
 }
 
