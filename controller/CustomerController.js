@@ -11,7 +11,34 @@ let update = $("#customer_btn>button").eq(1);
 let delete_btn = $("#customer_btn>button").eq(2);
 let reset = $("#customer_btn>button").eq(3);
 
+let searchBtn=$('#search2');
+let searchField=$('#searchField2');
+
 const mobilePattern = new RegExp("^(?:0|94|\\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\\d)\\d{6}$");
+
+searchField.on('input', function () {
+    let search_term = searchField.val();
+
+    let results = customer_db.filter((item) =>
+
+        item.customer_id.toLowerCase().startsWith(search_term.toLowerCase()) || item.customer_name.toLowerCase().startsWith(search_term.toLowerCase()) || item.customer_address.toLowerCase().startsWith(search_term.toLowerCase()) ||
+        item.mobile.toLowerCase().startsWith(search_term.toLowerCase())
+
+    );
+
+    $('#customer-tbl-body').eq(0).empty();
+    results.map((item, index) => {
+        let tbl_row = `<tr>
+            <th scope="row">${item.customer_id}</th>
+            <td>${item.customer_name}</td>
+            <td>${item.customer_address}</td>
+            <td>${item.mobile}</td>
+        </tr>`;
+        $('#customer-tbl-body').eq(0).append(tbl_row);
+    });
+
+});
+
 
 // --------------- clear inputs
 const cleanInputs = () => {
@@ -111,7 +138,7 @@ $("#customer_page").on('click', function (){
     populateCustomerTbl();
 })
 
-$("#customer-tbl-body").on('click', function (){
+$('#customerTable').on('click', 'tbody tr', function(){
     let customerIdValue = $(this).find('th').text();
     let nameValue = $(this).find('td:eq(0)').text();
     let addressValue = $(this).find('td:eq(1)').text();

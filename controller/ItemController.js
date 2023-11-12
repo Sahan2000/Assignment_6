@@ -1,4 +1,4 @@
-import {item_db} from "../db/db.js";
+import {customer_db, item_db} from "../db/db.js";
 import {ItemModel} from "../model/ItemModel.js";
 
 let itemId = $("#itemId");
@@ -10,6 +10,32 @@ let submit = $("#item_btn>button").eq(0);
 let update = $("#item_btn>button").eq(1);
 let delete_btn = $("#item_btn>button").eq(2);
 let reset = $("#item_btn>button").eq(3);
+
+let searchBtn=$('#search3');
+let searchField=$('#searchField3');
+
+
+searchField.on('input', function () {
+    let search_term = searchField.val();
+
+    let results = item_db.filter((item) =>
+
+        item.itemCode.toLowerCase().startsWith(search_term.toLowerCase()) || item.itemName.toLowerCase().startsWith(search_term.toLowerCase())
+
+    );
+
+    $('#item-tbl-body').eq(0).empty();
+    results.map((item, index) => {
+        let tbl_row = `<tr>
+            <th scope="row">${item.itemCode}</th>
+            <td>${item.itemName}</td>
+            <td>${item.price}</td>
+            <td>${item.qty}</td>
+        </tr>`;
+        $('#item-tbl-body').eq(0).append(tbl_row);
+    });
+
+});
 
 function generateItemCode() {
     let highestItemCode = 0;
@@ -108,7 +134,7 @@ submit.on('click',function (){
     }
 })
 
-$("#item-tbl-body").eq(0).on('click', function (){
+$('#itemTable').on('click', 'tbody tr', function(){
     let itemCodeValue = $(this).find('th').text();
     console.log(itemCodeValue);
     let itemNameValue = $(this).find('td:eq(0)').text();
